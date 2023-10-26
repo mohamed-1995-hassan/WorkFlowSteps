@@ -12,50 +12,12 @@ namespace WebApplication7.Entities
         public DateTime CreationAt { get; set; }
         public WfStatus Status { get; set; }
         public List<UserTask> UserTasks { get; set; } = new();
-
-        //public static WorkflowInstance InitPrepareStudentWf(string initiator, string requestNo, int studentId)
-        //{
-        //    var wf = new WorkflowInstance
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        CreationAt = DateTime.Now,
-        //        Initiator = initiator,
-        //        RequestNo = requestNo,
-        //        WorkflowType = WfType.PrepareStudent,
-        //        StudentId = studentId
-        //    };
-        //    var task = new Entities.UserTask { Id = Guid.NewGuid(), AssignTo = "R2", RequestId = wf.Id, WorkflowStep = WfStep.AddNewStudentReview1Step, WorkflowType = WfType.PrepareStudent };
-        //    wf.UserTasks.Add(task);
-        //    return wf;
-        //}
-
-        //public UserTask MoveNext1(UserTask oldTask, int? desicion)
-        //{
-        //    oldTask.Close(desicion);
-        //    if (desicion == 1)
-        //    {
-        //        Status = WfStatus.InProgress;
-        //        var task = new Entities.UserTask { Id = Guid.NewGuid(), AssignTo = "R3", RequestId = Id, WorkflowStep = WfStep.AddNewStudentReview2Step, WorkflowType = WfType.PrepareStudent };
-        //        UserTasks.Add(task);
-        //        return task;
-        //    }
-        //    else
-        //    {
-        //        Status = WfStatus.Finshied;
-        //        return null;
-        //    }
-        //}
-
-        //public void MoveNext2(UserTask oldTask, int? desicion)
-        //{
-        //    oldTask.Close(desicion);
-        //    Status = WfStatus.Finshied;
-        //}
     }
 
     public enum WfType
     {
         PrepareStudent = 1,
+        JobApplication = 2
         //RecivieStudent
     }
 
@@ -64,7 +26,14 @@ namespace WebApplication7.Entities
         Init,
         AddNewStudentReview1Step,
         AddNewStudentReview2Step,
-        Finished
+        Finished,
+        AddBasicInfo,
+        ReviewApplication,
+        SendEmail,
+        DeleteUser,
+        SendRecommendation,
+        ApplyRecommendation,
+        KeepHistory
     }
 
     public enum WfStatus
@@ -82,7 +51,10 @@ namespace WebApplication7.Entities
         Approve1 = 2,
         Reject1 = 4,
         Approve2 = 8,
-        Reject2 = 16
+        Reject2 = 16,
+        NotResponse = 32,
+        Approve3 = 64,
+
     }
 
 

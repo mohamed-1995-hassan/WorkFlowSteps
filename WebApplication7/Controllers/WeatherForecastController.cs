@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApplication7.WorkFlows;
 
 namespace WebApplication7.Controllers
 {
@@ -21,13 +22,13 @@ namespace WebApplication7.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult Get()
         {
-            var wf = new PrepareStudentWorkflowDefiniation();
+            var wf = new JobApplicationWorkflowDefiniation();
 
             var ss = wf.MoveNext(new Entities.UserTask
             {
-                CurrentWorkflowStep = Entities.WfStep.AddNewStudentReview1Step,
-                Desicion = Entities.WfDesicion.Approve1,
-                AssignTo = "R2"
+                CurrentWorkflowStep = Entities.WfStep.ReviewApplication,
+                Desicion = Entities.WfDesicion.Reject1,
+                AssignTo = "S2"
             });
             //var oldTask = new Entities.UserTask
             //{

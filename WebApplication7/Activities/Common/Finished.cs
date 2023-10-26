@@ -1,6 +1,6 @@
 ﻿using WebApplication7.Entities;
 
-namespace WebApplication7.Activities.PrepareStudentWorkflow
+namespace WebApplication7.Activities.Common
 {
     public class FinishedStep : IWorkflowActivity
     {
